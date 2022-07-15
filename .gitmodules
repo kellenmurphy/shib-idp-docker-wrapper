@@ -1,0 +1,3 @@
+[submodule "shibboleth-idp-docker"]
+	path = shibboleth-idp-docker
+	url = git@github.com:kellenmurphy/shibboleth-idp-docker.git
