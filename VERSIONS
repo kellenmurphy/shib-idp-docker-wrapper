@@ -1,0 +1,103 @@
+#
+# Version numbers for components and the resulting image.
+#
+
+#
+# Java
+#
+# Base image to use for the build.
+#
+JAVA_VERSION=amazoncorretto:17
+
+#
+# Jetty
+#
+# Jetty 9.x releases are identified by a fairly normal version number
+# extended with the date of release. We separate those
+# so that we can use the simple version number in Docker
+# image tags without overcomplicating things.
+#
+# Jetty 10.x releases do not use the additional release date
+# decoration; JETTY_DATE should be set empty in this case.
+#
+#JETTY_VERSION=10.0.11
+#JETTY_DATE=
+JETTY_VERSION=9.4.48
+JETTY_DATE=v20220622
+
+#
+# Shibboleth IdP
+#
+SHIB_RELEASE=4.1.6
+
+#
+# Image repository.
+#
+IMAGE_REPO=shibboleth-idp
+
+#
+# Image tag suffix, to allow us to build multiple images with (for example)
+# different versions of Java. Use an empty entry for the main line.
+#
+IMAGE_SUFFIX=
+
+
+#######################################################
+###                                                 ###
+###   D O   N O T   C H A N G E   A N Y T H I N G   ###
+###                                                 ###
+###        B E L O W   T H I S   P O I N T          ###
+###                                                 ###
+#######################################################
+
+#
+# Split the Jetty version number into its components.
+#
+if [[ $JETTY_VERSION =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+  JETTY_MAJOR=${BASH_REMATCH[1]}
+  JETTY_MINOR=${BASH_REMATCH[2]}
+  JETTY_PATCH=${BASH_REMATCH[3]}
+else
+  JETTY_MAJOR=unknown
+  JETTY_MINOR=unknown
+  JETTY_PATCH=unknown
+  echo "Could not understand Jetty version $JETTY_VERSION"
+fi
+
+#
+# Work out the Jetty release version. For Jetty 10+ this
+# is the same as JETTY_VERSION. For Jetty 9.x, we must add the
+# release date.
+#
+if [[ $JETTY_MAJOR == 10 ]]; then
+  JETTY_RELEASE=$JETTY_VERSION
+else
+  JETTY_RELEASE=$JETTY_VERSION.$JETTY_DATE
+fi
+
+#
+# The jetty-base version is the minor version of the release.
+#
+JETTY_BASE_VERSION=$JETTY_MAJOR.$JETTY_MINOR
+
+#echo "JETTY_VERSION: $JETTY_VERSION"
+#echo "   JETTY_MAJOR: $JETTY_MAJOR"
+#echo "   JETTY_MINOR: $JETTY_MINOR"
+#echo "   JETTY_PATCH: $JETTY_PATCH"
+#echo "JETTY_DATE:    $JETTY_DATE"
+#echo "JETTY_RELEASE: $JETTY_RELEASE"
+#echo "JETTY_BASE_VERSION: $JETTY_BASE_VERSION"
+
+#
+# Image tag and full name.
+#
+IMAGE_TAG=${JETTY_VERSION}${IMAGE_SUFFIX}
+IMAGE_NAME=${IMAGE_REPO}:${IMAGE_TAG}
+
+
+# Tell Emacs that this is a shell script.
+# Local Variables:
+# mode: sh
+# indent-tabs-mode: nil
+# tab-width: 4
+# End:
