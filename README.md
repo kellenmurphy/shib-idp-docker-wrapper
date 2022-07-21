@@ -19,6 +19,9 @@ To stop and then purge the container:
 ./purge
 ```
 
+## deploy.sh and redeploy.sh
+
+These scripts are also provided as intermediate deployment steps, or to re-deploy a configuration change.
 ## wrap.sh
 
 Any of the scripts from [iay/shibboleth-idp-docker][https://github.com/iay/shibboleth-idp-docker] can be executed with overwritten `VERSIONS` settings with `wrap.sh` as, for example:
