@@ -32,6 +32,11 @@ Any of the scripts from [iay/shibboleth-idp-docker][https://github.com/iay/shibb
 
 will execute the installation. For the `install` command, we also override `install-idp` settings with a local file. I'm sure more changes are under way, but I wanted the simplest set of wrapper scripts I could get for the time being, so I can quickly spawn test instances on `idp.example.org`.
 
-## TODO
+## Shibboleth Configuration
+
+A `shibboleth-idp` directory exists at the root of this project which will overwrite the running config if files are provided, i.e. credentials.
+
+# TODO
 
 [ ] Bring over changes from [kellenmurphy/shib-docker](https://github.com/kellenmurphy/shib-docker) for Azure + WSL stuff.
+[ ] Scripts for managing certs.
