@@ -1,23 +1,44 @@
 # shib-idp-docker-wrapper
 
-My development environment for Shibboleth IDP, based upon [@iay](https://github.com/iay)'s handy shibboleth-idp-docker repository. 
+My development environment for Shibboleth IDP, based upon the [@iay/shibboleth-idp-docker](https://github.com/iay/shibboleth-idp-docker) repository, my [fork](https://github.com/kellenmurphy/shibboleth-idp-docker) of which is included as a [submodule](https://github.blog/2016-02-01-working-with-submodules/). 
 
-## Quickstart
+That means you'll want to use `--recursive` when cloning:
 
-To get started quickly with a stock Shibboleth IDP running on localhost with the entityID: `https://idp.example.org/idp/shibboleth` simply run:
+```
+git clone --recursive https://github.com/kellenmurphy/shib-idp-docker-wrapper.git
+```
+
+You'll also do well to run:
+
+```
+git pull --recurse-submodules
+```
+
+every once in a while.  
+
+> N.B. No promises this won't break if [@iay](https://github.com/iay) changes some things and I end up pulling them in to work on something. This is a **development** environment after all, so please take that as solid advice and don't use this in a production environment. If you want to run Shibboleth IDP in production using Docker, look at the [InCommon Trusted Access Platform](https://spaces.at.internet2.edu/display/ITAP/InCommon+Trusted+Access+Platform+Library) or [hire me](https://idmengineering.com) :smile:. As of July 2022, a known working commit from the [base repository][https://github.com/kellenmurphy/shibboleth-idp-docker] is: 
+
+You'll need to have Docker installed on your local machine. I work on a Windows 10 Pro machine using Docker with the WSL2 backend, but this will presumably work on *nix. 
+
+## quickstart.sh
+
+To get started quickly with a stock Shibboleth IDP running on `localhost` with the entityID: `https://idp.example.org/idp/shibboleth` simply run:
 
 ```bash
 ./quickstart.sh
 ```
 
-You'll be asked to provide the export password for the self-signed certificate that's being generated for HTTPS, use 'changeit' to maintain compatibility with the defaults from [iay/shibboleth-idp-docker][https://github.com/iay/shibboleth-idp-docker].
+You'll be asked to provide the export password for the self-signed certificate that's being generated for the userfacing (browser) TLS certificate, use 'changeit' to maintain compatibility with the defaults from the [base repository][https://github.com/kellenmurphy/shibboleth-idp-docker].
+
+## purge.sh
 
 To stop and then purge the container:
 
 ```bash
-./wrap.sh stop
-./purge
+./purge.sh
 ```
+
+This uses [#wrap.sh] to stop the running container, remove the files created within the [base repository][https://github.com/kellenmurphy/shibboleth-idp-docker] that are created when pulling down Jetty and Shib IDP, as well as logs from the previous container execution.
 
 ## deploy.sh and redeploy.sh
 
