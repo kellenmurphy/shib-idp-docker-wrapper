@@ -8,13 +8,11 @@ That means you'll want to use `--recursive` when cloning:
 git clone --recursive https://github.com/kellenmurphy/shib-idp-docker-wrapper.git
 ```
 
-You'll also do well to run:
+You'll also do well to run this every once in a while:
 
 ```
 git pull --recurse-submodules
-```
-
-every once in a while.  
+```  
 
 > N.B. No promises this won't break if [@iay](https://github.com/iay) changes some things and I end up pulling them in to work on something. This is a **development** environment after all, so please take that as solid advice and don't use this in a production environment. If you want to run Shibboleth IDP in production using Docker, look at the [InCommon Trusted Access Platform](https://spaces.at.internet2.edu/display/ITAP/InCommon+Trusted+Access+Platform+Library) or [hire me](https://idmengineering.com) :smile:. 
 
