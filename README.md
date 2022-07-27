@@ -88,7 +88,7 @@ Jetty logs can be found in `./shibboleth-idp-docker/logs/jetty` and IDP logs in 
 ---
 # To-do List
 
-[ ] Bring over changes from [kellenmurphy/shib-docker](https://github.com/kellenmurphy/shib-docker) for Azure + WSL stuff, as different branches.
-[ ] Re-factor as `ansible` playbook.
-[ ] Create scripts for managing certs.
-[ ] Move configuration into `overlay` directory to allow for customization of `metadata` and `view` directories in `shibboleth-idp`
+- [ ] Bring over changes from [kellenmurphy/shib-docker](https://github.com/kellenmurphy/shib-docker) for Azure + WSL stuff, as different branches.
+- [ ] Re-factor as `ansible` playbook.
+- [ ] Create scripts for managing certs.
+- [ ] Move configuration into `overlay` directory to allow for customization of `metadata` and `view` directories in `shibboleth-idp`
