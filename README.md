@@ -45,9 +45,9 @@ To stop and then purge the container:
 
 This uses [#wrap.sh] to stop the running container, remove the files created within the [base repository][https://github.com/kellenmurphy/shibboleth-idp-docker] that are created when pulling down Jetty and Shib IDP, as well as logs from the previous container execution.
 
-## deploy.sh and redeploy.sh
+## deploy.sh & redeploy.sh
 
-These scripts are also provided as intermediate deployment steps, or to re-deploy a configuration change.
+These scripts are also provided as intermediate deployment steps, or to re-deploy a configuration change. If you've stopped a container, i.e. with `./wrap.sh stop` you can use `deploy.sh` to restart it, but generally you'll just use `redeploy.sh`. Think of this as restarting Jetty.
 ## wrap.sh
 
 Any of the scripts from [iay/shibboleth-idp-docker](https://github.com/iay/shibboleth-idp-docker) can be executed with overwritten `VERSIONS` settings with `wrap.sh` as, for example:
@@ -73,11 +73,15 @@ Not all of the commands in the [base repository](https://github.com/iay/shibbole
 - `reload-service` - Run the `reload-service.sh` script inside the running container for reloading Shibboleth services (i.e. `./wrap.sh reload-service -id shibboleth.AttributeFilterService`).
 - `run` - Runs the container.
 - `terminate` - Kills the running container.
-- `test` - Run the IdP container in a test mode in a named container which terminates and is removed on <kbd>ctrl</kbd>+<kbd>c</kbd>.
+- `test` - Run in a test mode which terminates and is removed on <kbd>ctrl</kbd>+<kbd>c</kbd>. Valuable for determining why, for example, IDP may not be starting / container dies and restarts over and over.
 
 ## Shibboleth Configuration
 
 A `shibboleth-idp` directory exists at the root of this project which will overwrite the running config if files are provided, i.e. credentials. I usually symlink `shibboleth-idp` somewhere handy for storing a particular projects configuration data. This directory is listed in `.gitignore` so you don't accidentally add your secrets.propterties to a fork on this wrapper project. That's **never** happened. :wink:
+
+## Logs
+
+Jetty logs can be found in `./shibboleth-idp-docker/logs/jetty` and IDP logs in `./shibboleth-idp-docker/shibboleth-idp/logs`.
 
 ---
 # To-do List
