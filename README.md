@@ -16,7 +16,9 @@ git pull --recurse-submodules
 
 every once in a while.  
 
-> N.B. No promises this won't break if [@iay](https://github.com/iay) changes some things and I end up pulling them in to work on something. This is a **development** environment after all, so please take that as solid advice and don't use this in a production environment. If you want to run Shibboleth IDP in production using Docker, look at the [InCommon Trusted Access Platform](https://spaces.at.internet2.edu/display/ITAP/InCommon+Trusted+Access+Platform+Library) or [hire me](https://idmengineering.com) :smile:. As of July 2022, a known working commit from the [base repository][https://github.com/kellenmurphy/shibboleth-idp-docker] is: 
+> N.B. No promises this won't break if [@iay](https://github.com/iay) changes some things and I end up pulling them in to work on something. This is a **development** environment after all, so please take that as solid advice and don't use this in a production environment. If you want to run Shibboleth IDP in production using Docker, look at the [InCommon Trusted Access Platform](https://spaces.at.internet2.edu/display/ITAP/InCommon+Trusted+Access+Platform+Library) or [hire me](https://idmengineering.com) :smile:. 
+
+As of July 2022, a known working commit from the [base repository](https://github.com/kellenmurphy/shibboleth-idp-docker) is: [b534346f244f3018bf2ae48988c2babfee995c5b](https://github.com/kellenmurphy/shibboleth-idp-docker/commit/b534346f244f3018bf2ae48988c2babfee995c5b)
 
 You'll need to have Docker installed on your local machine. I work on a Windows 10 Pro machine using Docker with the WSL2 backend, but this will presumably work on *nix. 
 
