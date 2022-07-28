@@ -17,7 +17,7 @@ done
 echo "executing: $1 from @iay/shibboleth-idp-docker..."
 if test -f "./shibboleth-idp-docker/$1"; then
     cd ./shibboleth-idp-docker/
-    ./$1
+    ./$@
     cd ..
 fi
 

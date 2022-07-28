@@ -35,7 +35,11 @@ To stop and then purge the container. This uses [wrap.sh](#wrapsh) to stop the r
 
 ### redeploy.sh
 
-This scripts is used to re-deploy a configuration change, with `deploy.sh` being a small script that contains some intermediate steps that need to happen, but aren't reallyi.e. `quickstart.sh` runs `deploy.sh`. If you've stopped a container, i.e. with `./wrap.sh stop` you can use `deploy.sh` to restart it, but generally you'll just use `redeploy.sh`. Think of this as restarting Jetty. You probably won't ever run `deploy.sh`... but you will likely run `redeploy.sh` every time you adjust your running Shibboleth configuration.
+This scripts is used to re-deploy a configuration change, with `deploy.sh` being a small script that contains some intermediate steps that need to happen, but aren't reallyi.e. `quickstart.sh` runs `deploy.sh`. If you've stopped a container, i.e. with `./wrap.sh stop` you can use `deploy.sh` to restart it, but generally you'll just use `redeploy.sh`. Think of this as restarting Jetty. You probably won't ever run `deploy.sh`... but you will likely run `redeploy.sh` every time you adjust your running Shibboleth configuration. 
+
+But I'm also not your mother... do you what you want! :man_shrugging:
+
+Note that if you're changing Shibboleth or Jetty versions it's probably best to just re-run `quickstart.sh`.
 ### wrap.sh
 
 Any of the scripts from [iay/shibboleth-idp-docker](https://github.com/iay/shibboleth-idp-docker) can be executed with overwritten files from the base-repo, i.e. `VERSIONS` settings with `wrap.sh` as, for example:
@@ -50,7 +54,7 @@ For the `install` command, we also override `install-idp` settings with a local 
 
 Not all of the commands in the [base repository](https://github.com/iay/shibboleth-idp-docker) necessarily need to be "wrap'd"... but since you never know for sure which scripts are `source`-ing some of the environment files, it's better safe than sorry to `wrap` it.
 
-#### Scripts you can (and *probably* should) run with `wrap`:
+#### Scripts you can (and *probably* should) run with `wrap.sh`:
 
 - `aacli` - Run the [`aacli` tool](https://shibboleth.atlassian.net/wiki/spaces/IDP4/pages/1265631852/AACLI) inside the running container.
 - `build` - Builds the container image. (Arguments to this script are passed to the underlying "docker build" command.)
