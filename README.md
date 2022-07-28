@@ -83,7 +83,7 @@ A `shibboleth-idp` directory exists at the root of this project which will overw
 
 ## Logs
 
-Jetty logs can be found in `./shibboleth-idp-docker/logs/jetty` and IDP logs in `./shibboleth-idp-docker/shibboleth-idp/logs`.
+Jetty logs can be found in `./shibboleth-idp-docker/logs/jetty` and IDP logs in `./shibboleth-idp-docker/shibboleth-idp/logs`. The script `tail-logs.sh` will `tail -f` both th`e jetty.log` file and the `idp-process.log` file.
 
 ---
 # To-do List
