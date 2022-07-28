@@ -1,11 +1,13 @@
 #!/bin/bash
 # Wrap shell script from @iay/shibboleth-idp-docker with our VERSIONS and execute
 
-files=("VERSIONS" "install-idp") 
-mkdir ./tmp
+TMPDIR=./tmp
+files=(`ls ./base-repo-overlay`)
+echo ${files[@]}; 
+mkdir $TMPDIR
 for file in ${files[@]}; do
-    cp ./shibboleth-idp-docker/$file ./tmp/$file-ORIG
-    cp ./$file ./shibboleth-idp-docker/$file
+    cp ./shibboleth-idp-docker/$file $TMPDIR/$file-ORIG
+    cp ./base-repo-overlay/$file ./shibboleth-idp-docker/$file
 done
 
 
@@ -17,6 +19,6 @@ if test -f "./shibboleth-idp-docker/$1"; then
 fi
 
 for file in ${files[@]}; do
-    cp ./tmp/$file-ORIG ./shibboleth-idp-docker/$file
+    cp $TMPDIR/$file-ORIG ./shibboleth-idp-docker/$file
 done
-rm -rf ./tmp
+rm -rf $TMPDIR
