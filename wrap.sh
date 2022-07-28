@@ -3,7 +3,6 @@
 
 TMPDIR=./tmp
 files=(`ls ./base-repo-overlay`)
-echo ${files[@]}; 
 mkdir $TMPDIR
 for file in ${files[@]}; do
     cp ./shibboleth-idp-docker/$file $TMPDIR/$file-ORIG
