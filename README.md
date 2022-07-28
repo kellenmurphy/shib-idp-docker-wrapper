@@ -31,7 +31,7 @@ This will create a self-signed certificate by default, using the parameters with
 
 ### purge.sh
 
-To stop and then purge the container. This uses [#wrap.sh] to stop the running container, remove the files created within the [base repository][https://github.com/kellenmurphy/shibboleth-idp-docker] that are created when pulling down Jetty and Shib IDP, as well as logs from the previous container execution. It does *NOT* remove container images.
+To stop and then purge the container. This uses [wrap.sh](#wrapsh) to stop the running container, remove the files created within the [base repository][https://github.com/kellenmurphy/shibboleth-idp-docker] that are created when pulling down Jetty and Shib IDP, as well as logs from the previous container execution. It does *NOT* remove container images.
 
 ### redeploy.sh
 
