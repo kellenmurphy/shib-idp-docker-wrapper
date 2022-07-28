@@ -3,12 +3,16 @@
 
 TMPDIR=./tmp
 files=(`ls ./base-repo-overlay`)
-mkdir $TMPDIR
+if [ ! -e $TMPDIR ]; then
+    mkdir $TMPDIR
+fi
+
 for file in ${files[@]}; do
-    cp ./shibboleth-idp-docker/$file $TMPDIR/$file-ORIG
+    if [ -e ./shibboleth-idp-docker/$file ]; then
+        cp ./shibboleth-idp-docker/$file $TMPDIR/$file-ORIG
+    fi
     cp ./base-repo-overlay/$file ./shibboleth-idp-docker/$file
 done
-
 
 echo "executing: $1 from @iay/shibboleth-idp-docker..."
 if test -f "./shibboleth-idp-docker/$1"; then
@@ -18,6 +22,14 @@ if test -f "./shibboleth-idp-docker/$1"; then
 fi
 
 for file in ${files[@]}; do
-    cp $TMPDIR/$file-ORIG ./shibboleth-idp-docker/$file
+    if [ -e ./shibboleth-idp-docker/$file ]; then 
+        rm -rf ./shibboleth-idp-docker/$file
+    fi
+    if [ -e $TMPDIR/$file-ORIG ]; then
+        cp $TMPDIR/$file-ORIG ./shibboleth-idp-docker/$file
+    fi
 done
-rm -rf $TMPDIR
+
+if [ -e $TMPDIR ]; then
+    rm -rf $TMPDIR
+fi

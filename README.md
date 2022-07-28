@@ -35,7 +35,7 @@ To get started quickly with a stock Shibboleth IDP running on `localhost` with t
 ./quickstart.sh
 ```
 
-You'll be asked to provide the export password for the self-signed certificate that's being generated for the userfacing (browser) TLS certificate, use 'changeit' to maintain compatibility with the defaults from the [base repository][https://github.com/kellenmurphy/shibboleth-idp-docker].
+This will create a self-signed certificate by default, using the parameters within the file `./base-repo-overlay/certenv`.
 
 ## purge.sh
 
@@ -96,4 +96,3 @@ Jetty logs can be found in `./shibboleth-idp-docker/logs/jetty` and IDP logs in 
 
 - [ ] Bring over changes from [kellenmurphy/shib-docker](https://github.com/kellenmurphy/shib-docker) for Azure + WSL stuff, as different branches.
 - [ ] Re-factor as `ansible` playbook.
-- [ ] Create scripts for managing certs.

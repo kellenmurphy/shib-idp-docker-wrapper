@@ -1,0 +1,15 @@
+# Variables related to the idp-userfacing.p12 certificate that is optionally 
+# generated.
+
+# Password and settings generating the user-facing TLS keystore (if needed),
+# you must also specify this in the Jetty configuration if you use something
+# other than "changeit"
+UFPASS=changeit
+COMMON_NAME=idp.example.org
+SANS:idp.example.org
+COUNTRY=US
+STATE=Ohio
+LOCALITY=Athens
+ORGANISATION='BCSE, LLC.'
+ORGANISATIONAL_UNIT='IDM Engineering'
+
