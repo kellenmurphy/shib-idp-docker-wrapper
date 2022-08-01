@@ -76,5 +76,5 @@ Jetty logs can be found in `./shibboleth-idp-docker/logs/jetty` and IDP logs in 
 ---
 ## Stuff To-do
 
-- [ ] Bring over changes from [kellenmurphy/shib-docker](https://github.com/kellenmurphy/shib-docker) for Azure + WSL stuff, as different branches.
+- [ ] Bring over changes from [kellenmurphy/azure-shib-docker](https://github.com/kellenmurphy/azure-shib-docker) for Azure + WSL stuff, as different branches.
 - [ ] Re-factor as `ansible` playbook.
